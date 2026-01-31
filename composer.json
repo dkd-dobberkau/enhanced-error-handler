@@ -1,5 +1,5 @@
 {
-    "name": "dkd/enhanced-error-handler",
+    "name": "dkd-dobberkau/enhanced-error-handler",
     "description": "Enhanced TYPO3 Debug Exception Handler with copy-to-clipboard functionality similar to Laravel Ignition",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",

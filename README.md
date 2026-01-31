@@ -41,7 +41,7 @@ Add the repository to your `composer.json`:
 Then require the package:
 
 ```bash
-composer require dkd/enhanced-error-handler:dev-main
+composer require dkd-dobberkau/enhanced-error-handler:dev-main
 ```
 
 ### Manual Installation
