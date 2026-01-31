@@ -1,5 +1,8 @@
 # Enhanced Error Handler for TYPO3
 
+[![TYPO3](https://img.shields.io/badge/TYPO3-12.4%20%7C%2013.4-orange.svg)](https://typo3.org)
+[![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
+
 A debug exception handler for TYPO3 with copy-to-clipboard functionality, using TYPO3's standard styling.
 
 ## Features
@@ -10,7 +13,7 @@ A debug exception handler for TYPO3 with copy-to-clipboard functionality, using 
 - **Vendor Frame Highlighting**: Application code is visually distinct from vendor/framework code
 - **Code Snippets**: See the relevant code around each error location
 - **Keyboard Shortcuts**: Press `Ctrl+Shift+C` (or `Cmd+Shift+C` on Mac) to copy all exception details
-- **Responsive Design**: Works on mobile devices for debugging on the go
+- **Markdown Output**: Copy All generates Markdown-formatted output for easy pasting into issues
 - **Toast Notifications**: Visual feedback when content is copied
 
 ## Requirements
@@ -20,17 +23,43 @@ A debug exception handler for TYPO3 with copy-to-clipboard functionality, using 
 
 ## Installation
 
-### Via Composer (recommended)
+### Via Composer
+
+Add the repository to your `composer.json`:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dkd-dobberkau/enhanced-error-handler"
+        }
+    ]
+}
+```
+
+Then require the package:
 
 ```bash
-composer require dkd/enhanced-error-handler
+composer require dkd/enhanced-error-handler:dev-main
 ```
 
 ### Manual Installation
 
-1. Download the extension
+1. Clone or download from [GitHub](https://github.com/dkd-dobberkau/enhanced-error-handler)
 2. Extract to `packages/enhanced_error_handler/` or `typo3conf/ext/enhanced_error_handler/`
-3. Activate the extension in the Extension Manager
+3. Add path repository to your `composer.json`:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*"
+        }
+    ]
+}
+```
 
 ## Configuration
 
@@ -40,7 +69,7 @@ Add the following to your `config/system/additional.php`:
 <?php
 
 // Register the enhanced debug exception handler
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] = 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] =
     \Dkd\EnhancedErrorHandler\Error\EnhancedDebugExceptionHandler::class;
 ```
 
@@ -56,11 +85,11 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = 1;
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = '*';
 
 // Use enhanced handler
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] = 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] =
     \Dkd\EnhancedErrorHandler\Error\EnhancedDebugExceptionHandler::class;
 
 // Convert more error types to exceptions for better debugging
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] =
     E_ALL ^ E_NOTICE ^ E_WARNING ^ E_USER_ERROR ^ E_USER_NOTICE ^ E_USER_WARNING;
 ```
 
@@ -70,7 +99,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] =
 
 Each section of the error page has a copy button:
 
-- **Copy All**: Copies the complete exception details including message, file, line, and full stack trace
+- **Copy All**: Copies the complete exception details in Markdown format
 - **Message**: Copies just the exception message
 - **Location**: Copies the file path and line number
 - **Code Snippet**: Copies the code around the error
@@ -118,7 +147,6 @@ class MyCustomExceptionHandler extends EnhancedDebugExceptionHandler
 {
     protected function getHeader(): string
     {
-        // Custom header with your logo
         return '<div class="header">
             <img src="/path/to/your/logo.svg" alt="Logo">
             <h1>Something went wrong</h1>
@@ -135,14 +163,13 @@ Override the `getEnhancedStylesheet()` method to customize colors:
 protected function getEnhancedStylesheet(): string
 {
     $css = parent::getEnhancedStylesheet();
-    
-    // Add custom styles
+
     $css .= '
         :root {
-            --accent-red: #your-brand-color;
+            --accent-orange: #your-brand-color;
         }
     ';
-    
+
     return $css;
 }
 ```
@@ -158,11 +185,11 @@ protected function getEnhancedStylesheet(): string
 - Code snippets with line highlighting
 - Keyboard shortcuts
 - Toast notifications
-- Markdown-formatted copy output for easy pasting
+- Markdown-formatted copy output
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a [Pull Request](https://github.com/dkd-dobberkau/enhanced-error-handler/pulls).
 
 ## License
 
@@ -172,4 +199,3 @@ GPL-2.0-or-later
 
 - Inspired by [Laravel Ignition](https://github.com/spatie/laravel-ignition)
 - Built for [TYPO3 CMS](https://typo3.org)
-- Developed by [dkd Internet Service GmbH](https://www.dkd.de)
