@@ -1,0 +1,26 @@
+{
+    "name": "dkd/enhanced-error-handler",
+    "description": "Enhanced TYPO3 Debug Exception Handler with copy-to-clipboard functionality similar to Laravel Ignition",
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "dkd Internet Service GmbH",
+            "email": "info@dkd.de",
+            "homepage": "https://www.dkd.de"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^12.4 || ^13.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dkd\\EnhancedErrorHandler\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "enhanced_error_handler"
+        }
+    }
+}

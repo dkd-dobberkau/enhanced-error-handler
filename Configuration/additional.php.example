@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Enhanced Error Handler Configuration
+ *
+ * Add this to your config/system/additional.php file to enable the enhanced error handler.
+ *
+ * IMPORTANT: This should only be used in development environments!
+ */
+
+// Register the enhanced debug exception handler
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] = \Dkd\EnhancedErrorHandler\Error\EnhancedDebugExceptionHandler::class;
+
+// Optional: Also use it as production exception handler for development
+// WARNING: Never use this in production as it exposes sensitive information!
+// $GLOBALS['TYPO3_CONF_VARS']['SYS']['productionExceptionHandler'] = \Dkd\EnhancedErrorHandler\Error\EnhancedDebugExceptionHandler::class;
+
+// Recommended debug settings for development:
+// $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = 1;
+// $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = '*';
+// $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = E_ALL ^ E_NOTICE ^ E_WARNING ^ E_USER_ERROR ^ E_USER_NOTICE ^ E_USER_WARNING;
