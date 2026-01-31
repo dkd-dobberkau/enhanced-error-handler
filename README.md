@@ -2,6 +2,7 @@
 
 [![TYPO3](https://img.shields.io/badge/TYPO3-12.4%20%7C%2013.4-orange.svg)](https://typo3.org)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
+[![Packagist](https://img.shields.io/packagist/v/dkd-dobberkau/enhanced-error-handler.svg)](https://packagist.org/packages/dkd-dobberkau/enhanced-error-handler)
 
 A debug exception handler for TYPO3 with copy-to-clipboard functionality, using TYPO3's standard styling.
 
@@ -25,23 +26,8 @@ A debug exception handler for TYPO3 with copy-to-clipboard functionality, using 
 
 ### Via Composer
 
-Add the repository to your `composer.json`:
-
-```json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/dkd-dobberkau/enhanced-error-handler"
-        }
-    ]
-}
-```
-
-Then require the package:
-
 ```bash
-composer require dkd-dobberkau/enhanced-error-handler:dev-main
+composer require dkd-dobberkau/enhanced-error-handler
 ```
 
 ### Manual Installation
@@ -59,6 +45,12 @@ composer require dkd-dobberkau/enhanced-error-handler:dev-main
         }
     ]
 }
+```
+
+4. Then require the package:
+
+```bash
+composer require dkd-dobberkau/enhanced-error-handler:@dev
 ```
 
 ## Configuration
